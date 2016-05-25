@@ -1,6 +1,8 @@
 # RubyInSwift
 ## Some Ruby functions implemented in Swift
 
+* inspired by [Ruby Doc](http://ruby-doc.org/core-2.2.0/Array.html)
+
 * **sample**: Return random element(s) from collection
 ```swift
 [1,2,3].sample                          // 2
