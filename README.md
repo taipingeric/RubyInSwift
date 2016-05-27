@@ -35,3 +35,41 @@ array << [12, 13]                       // [0...13]
 array.unshift(-2, -1)                   // [-2, -1, 0...13]
 array.insert(-2, newElements: -10, -9)  // [..., -10, -9, 13]
 ```
+
+* **pop**
+```swift
+var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+array.pop()                             // 9
+array.pop(2)                            // [7, 8]
+array.pop(100)                          // nil
+```
+
+* **shift**
+```swift
+var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+array.shift()                           // 0
+array.shift(3)                          // [1, 2, 3]
+array.shift(100)                        // nil
+```
+* **delete_at**
+```swift
+var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+array.delete_at(1)                      // 1
+array.delete_at(100)                    // nil
+```
+* **delete**
+```swift
+var array = [0, 1, 0, 1, 0, 1]
+array.delete(1)                         // 1, array = [0, 0 ,0]
+array.delete(3)                         // nil
+array.delete(10) {                      // 101
+  return 101
+}
+```
+
+<!-- * ****
+```swift
+var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+array
+array
+``` -->

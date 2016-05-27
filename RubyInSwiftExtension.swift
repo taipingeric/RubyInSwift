@@ -1,3 +1,20 @@
+import Foundation
+
+extension Int {
+    /// Execute closure N times
+    func times(f: () -> ()) {
+        if self > 0 {
+            for _ in 0..<self { f() }
+        }
+    }
+    
+    func times(@autoclosure f: () -> ()) {
+        if self > 0 {
+            for _ in 0..<self { f() }
+        }
+    }
+}
+
 extension CollectionType where Index.Distance == Int {
     ///  Return random element from collection, or nil if collection is empty or count out of range
     public var sample: Generator.Element?  {
@@ -30,7 +47,7 @@ extension Array {
     public func isCountValid(count: Int) -> Bool { return count < self.count }
     
     /// Unsigned Int index
-    public func uIndex(index: Int) -> Int {
+    private func uIndex(index: Int) -> Int {
         return (index % count) + count
     }
     
@@ -115,5 +132,66 @@ extension SequenceType where Generator.Element : Equatable {
     /// Returns `true` iff `element` is in `self`.
     public func include(element: Generator.Element) -> Bool {
         return contains(element)
+    }
+}
+
+extension Array {
+    
+    /// If `!self.isEmpty`, remove the last element and return it, otherwise nil
+    public mutating func pop() -> Element? {
+        return popLast()
+    }
+    
+    /// pop last N elements and return them, return nil count is no valid
+    public mutating func pop(count: Int) -> [Element]? {
+        guard isCountValid(count) else {
+            return nil
+        }
+        var arr: [Element] = []
+        count.times {
+            arr.append( self.popLast()! )
+        }
+        return arr.reverse()
+    }
+    
+    /// Pop first element, otherwise return nil
+    public mutating func shift() -> Element? {
+        let first = self.first
+        removeAtIndex(0)
+        return first
+    }
+    
+    /// Pop first N elements, nil if count is not available or array is empty
+    public mutating func shift(count: Int) -> [Element]? {
+        guard isCountValid(count) else {
+            return nil
+        }
+        var array: [Element] = []
+        count.times {
+            array.append( self.shift()! )
+        }
+        return array
+    }
+    
+    /// Remove and return the element at index `i`, nil if index is not valid
+    public mutating func delete_at(index: Int) -> Element? {
+        guard isIndexValid(index) else {
+            return nil
+        }
+        return removeAtIndex(index)
+    }
+}
+
+extension Array where Element: Equatable {
+    /// Remove all elements equal to input item, nil if no matching element
+    public mutating func delete(item: Element, exception: (() -> Element)? = nil) -> Element? {
+        let isExist = contains(item)
+        self = self.filter { element -> Bool in
+            return element != item
+        }
+        if isExist {
+            return item
+        }
+        return exception?()
     }
 }
