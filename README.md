@@ -3,6 +3,7 @@
 
 * inspired by [Ruby Doc](http://ruby-doc.org/core-2.2.0/Array.html)
 
+### Collection
 * **sample**: Return random element(s) from collection
 ```swift
 [1,2,3].sample                          // 2
@@ -12,6 +13,7 @@ let set = Set([1,2,3,4,5,6,7,8,10])
 set.sample(3)                           // [10,4,2]
 set.sample(100)                         // nil (out of range!)
 ```
+### Array
 * **include, size, length, fetch, take, drop, first, last, push, <<, unshift, insert**
 ```swift
 var array = Array(0...9)
@@ -66,6 +68,13 @@ array.delete(10) {                      // 101
   return 101
 }
 ```
+* **compact**
+```swift
+var array = [0, nil, 1, 2, nil]
+array.compact                           // [0, 1, 2]
+```
+
+
 
 <!-- * ****
 ```swift
