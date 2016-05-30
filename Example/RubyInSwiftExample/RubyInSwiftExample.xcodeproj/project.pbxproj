@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				046FA91A1CFB62FC00B020BE /* RubyInSwiftExtension.swift */,
-				046FA8EC1CFB62DE00B020BE /* AppDelegate.swift */,
 				046FA8EE1CFB62DE00B020BE /* ViewController.swift */,
+				046FA8EC1CFB62DE00B020BE /* AppDelegate.swift */,
 				046FA8F01CFB62DE00B020BE /* Main.storyboard */,
 				046FA8F31CFB62DE00B020BE /* Assets.xcassets */,
 				046FA8F51CFB62DE00B020BE /* LaunchScreen.storyboard */,
@@ -486,6 +486,7 @@
 				046FA9131CFB62DE00B020BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		046FA9141CFB62DE00B020BE /* Build configuration list for PBXNativeTarget "RubyInSwiftExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +495,7 @@
 				046FA9161CFB62DE00B020BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		046FA9171CFB62DE00B020BE /* Build configuration list for PBXNativeTarget "RubyInSwiftExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +504,7 @@
 				046FA9191CFB62DE00B020BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

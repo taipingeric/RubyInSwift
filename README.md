@@ -73,6 +73,34 @@ array.delete(10) {                      // 101
 var array = [0, nil, 1, 2, nil]
 array.compact                           // [0, 1, 2]
 ```
+* **reverse_each**
+```swift
+var array = [0, 1, 2, 3]
+array.reverse_each()                    // array = [3, 2, 1, 0]
+array.reverse_each { print("\($0)") }   // 3 2 1 0
+```
+* **uniq**
+```swift
+let array = [0, 1, 0 ,2, 2 ,3]
+array.uniq()                            // [0, 1, 2, 3]
+```
+* **each**
+```swift
+let array = [0, 1, 2]
+array.each { element in                 // 0 1 2
+  print(element)
+}
+```
+
+### Int
+* **times**
+```swift
+let count = 3
+count.times {                           // Hi! Hi! Hi!
+  print("Hi!")
+}
+```
+
 
 
 

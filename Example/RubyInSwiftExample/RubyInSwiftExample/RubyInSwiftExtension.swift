@@ -106,6 +106,16 @@ extension Array {
         index < 0 ? self.insertContentsOf(newElements, at: uIndex(index) + 1) : self.insertContentsOf(newElements, at: index)
     }
     
+    /// Reverse Elements with optional closure backward
+    public mutating func reverseEach(f: (Element -> ())? = nil) {
+        var result: [Element] = []
+        self.count.times {
+            let last = self.popLast()!
+            result.append(last)
+            f?(last)
+        }
+        self = result
+    }
 }
 
 infix operator << { associativity left precedence 160 }
@@ -119,11 +129,38 @@ extension SequenceType where Generator.Element : Equatable {
     public func include(element: Generator.Element) -> Bool {
         return contains(element)
     }
+    
+    /// Returns array with uniq elements in `self`
+    public func uniq() -> [Generator.Element] {
+        var result: [Generator.Element] = []
+        self.forEach { element in
+            if !result.include(element) {
+                result.append(element)
+            }
+        }
+        return result
+    }
+}
+
+extension SequenceType {
+    
+    /// forEach
+    public func each(@noescape body: (Self.Generator.Element) -> ()) {
+        self.forEach { element in
+            body(element)
+        }
+    }
 }
 
 extension CollectionType where Generator.Element : OptionalType {
     
-    /// Returns a copy of self with all nil elements removed.
+    /** 
+    Returns a copy of self with all nil elements removed.
+    
+    - Author: https://forums.developer.apple.com/thread/7769
+    - Author: https://github.com/CalQL8ed-K-OS/CollectionType.compact
+     
+    */
     func compact() -> [Generator.Element.Unwrapped] {
         var result: [Generator.Element.Unwrapped] = []
         for item in self where item.hasValue {
@@ -146,5 +183,15 @@ extension Optional: OptionalType {
     }
     var hasValue: Bool {
         return self != nil
+    }
+}
+
+extension Int {
+    
+    /// Execute closure `self` times
+    func times(f: () -> ()) {
+        for _ in 0..<self {
+            f()
+        }
     }
 }
