@@ -32,7 +32,7 @@ extension Array {
     public func isCountValid(count: Int) -> Bool { return count < self.count }
     
     /// Unsigned Int index
-    public func uIndex(index: Int) -> Int {
+    private func uIndex(index: Int) -> Int {
         return (index % count) + count
     }
     
